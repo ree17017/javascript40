@@ -1,0 +1,63 @@
+<html>
+  <style>
+    .background_color {
+      background-color: red;
+      height: 100%;
+      width: 100%;
+      margin: auto auto;
+      position: relative;
+    }
+    #changeButton {
+      margin: auto auto;
+    }
+    #color-name {
+      border: 1px black solid;
+      margin: auto auto;
+      width: 70px;
+      padding: 10px 0 10px 0;
+    }
+    .vertical-center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: transalteY(-50%);
+      transform: translateY(-50%);
+    }
+    .center {
+      text-align: center;
+    }
+  </style>
+  <script>
+    function getRandomInt() {
+      return Math.floor(Math.random() * Math.floor(100));
+    }
+
+    function getSmallRandomInt() {
+      const letters = ["A", "B", "C", "D", "E", "F"];
+      return letters[Math.floor(Math.random() * Math.floor(6))];
+    }
+
+    function changeBackground() {
+      const background = document.getElementById("background");
+      const displayColorValue = document.getElementById("color-name");
+
+      backgroundColorHex = "#" + getSmallRandomInt() + getRandomInt();
+      background.style.backgroundj = backgroundColorHex;
+      displayColorValue.innerText = backgroundColorHex;
+    }
+  </script>
+  <body onload="changeBackground()">
+    <div id="background" data-testid="body" class="background_color">
+      <div class="vertical-center">
+        <div id="color-name" class="center"></div>
+        <input type="button" id="changeButton" value="Change Color" />
+      </div>
+    </div>
+  </body>
+  <script>
+    document
+      .getElementById("changeButton")
+      .addEventListener("click", changeBackground);
+  </script>
+</html>
